@@ -13,13 +13,15 @@ social:
     url: https://github.com/rfelixallen
   - platform: linkedin
     url: https://linkedin.com/in/robert-felix-allen
+  - platform: Resume
+    url: https://docs.google.com/document/d/e/2PACX-1vR2P5tO4eMAyj-zbGPEjHnKP3it9Z7NlfiHqvpLh1BjxeP3RnGg8erO9FvDlRLdjg/pub
 
 # General settings
 # url: http://brianmaierjr.github.com/uni
 # baseurl: "/uni" 
 markdown: kramdown
 sharing_image: share.jpg
-google_analytics: "UA-89711625-1" # google analytics tracking
+google_analytics: "UA-89711625-1"
 
 #### LAYOUT OPTIONS #####
 
@@ -27,4 +29,4 @@ google_analytics: "UA-89711625-1" # google analytics tracking
 half_side: right
 
 # Full layout
-full_text_position: right # left, right or center
+full_text_position: center
