@@ -9,12 +9,14 @@ content: I am an Information Technology operations and infrastructure profession
 
 # Add your social links
 social:
+  - platform: blog
+    url: https://blog.rfelixallen.com
   - platform: github
     url: https://github.com/rfelixallen
   - platform: linkedin
     url: https://linkedin.com/in/robert-felix-allen
   - platform: resume
-    url: https://docs.google.com/document/d/e/2PACX-1vR2P5tO4eMAyj-zbGPEjHnKP3it9Z7NlfiHqvpLh1BjxeP3RnGg8erO9FvDlRLdjg/pub
+    url: https://rfelixallen-card.s3.amazonaws.com/RobertFelixAllenResume.pdf
 
 # General settings
 # url: http://brianmaierjr.github.com/uni
