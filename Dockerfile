@@ -5,11 +5,13 @@ MAINTAINER Amazon AWS
 ENV VERSION_NODE_8=8.12.0
 ENV VERSION_NODE_10=10.16.0
 ENV VERSION_NODE_12=12
-ENV VERSION_NODE_DEFAULT=$VERSION_NODE_10
+ENV VERSION_NODE_14=14.17.0
+ENV VERSION_NODE_DEFAULT=$VERSION_NODE_14
 ENV VERSION_RUBY_2_4=2.4.6
 ENV VERSION_RUBY_2_6=2.6.3
-ENV VERSION_BUNDLER=2.0.1
-ENV VERSION_RUBY_DEFAULT=$VERSION_RUBY_2_4
+ENV VERSION_RUBY_2_7=2.7.2
+ENV VERSION_BUNDLER=2.2.16
+ENV VERSION_RUBY_DEFAULT=$VERSION_RUBY_2_7
 ENV VERSION_HUGO=0.55.6
 ENV VERSION_YARN=1.16.0
 ENV VERSION_AMPLIFY=1.12.0
@@ -72,7 +74,7 @@ RUN yum -y update && \
     yum clean all && \
     rm -rf /var/cache/yum
 
-## Install Node 8 & 10 & 12
+## Install Node 8 & 10 & 12 & 14
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 RUN curl -o- -L https://yarnpkg.com/install.sh > /usr/local/bin/yarn-install.sh
 RUN /bin/bash -c ". ~/.nvm/nvm.sh && \
@@ -83,9 +85,12 @@ RUN /bin/bash -c ". ~/.nvm/nvm.sh && \
 	nvm install $VERSION_NODE_12 && nvm use $VERSION_NODE_12 && \
 	npm install -g sm grunt-cli bower vuepress gatsby-cli && \
     bash /usr/local/bin/yarn-install.sh --version $VERSION_YARN && \
+        nvm install $VERSION_NODE_14 && nvm use $VERSION_NODE_14 && \
+        npm install -g sm grunt-cli bower vuepress gatsby-cli && \
+    bash /usr/local/bin/yarn-install.sh --version $VERSION_YARN && \
 	nvm alias default node && nvm cache clear"
 
-## Install Ruby 2.4.x and 2.6.x
+## Install Ruby 2.4.x and 2.6.x & 2.7
 RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB && \
 	curl -sL https://get.rvm.io | bash -s -- --with-gems="bundler"
 
@@ -93,7 +98,8 @@ ENV PATH /usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/s
 RUN /bin/bash --login -c "\
 	rvm install $VERSION_RUBY_2_4 && rvm use $VERSION_RUBY_2_4 && gem install bundler -v $VERSION_BUNDLER && gem install jekyll && \
 	rvm install $VERSION_RUBY_2_6 && rvm use $VERSION_RUBY_2_6 && gem install bundler -v $VERSION_BUNDLER && gem install jekyll && \
-	rvm cleanup all"
+	rvm install $VERSION_RUBY_2_7 && rvm use $VERSION_RUBY_2_7 && gem install bundler -v $VERSION_BUNDLER && gem install jekyll && \
+        rvm cleanup all"
 
 ## Install awscli
 RUN /bin/bash -c "pip3 install awscli && rm -rf /var/cache/apk/*"
