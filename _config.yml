@@ -9,8 +9,8 @@ content: I am an Information Technology operations and infrastructure profession
 
 # Add your social links
 social:
-  - platform: blog
-    url: https://blog.rfelixallen.com
+#  - platform: blog
+#    url: https://blog.rfelixallen.com
   - platform: github
     url: https://github.com/rfelixallen
   - platform: linkedin
